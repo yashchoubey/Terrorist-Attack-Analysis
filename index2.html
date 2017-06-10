@@ -1,0 +1,84 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {packages: ['map']});
+//    google.charts.setOnLoadCallback(drawMap);
+google.script.run.withSuccessHandler(drawMap).getData();
+    function drawMap (allData) {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Address');
+      data.addColumn('string', 'Location');
+      data.addColumn('string', 'Marker')
+
+      data.addRows(allData);
+      var url = 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/';
+
+      var options = {
+        zoomLevel: 6,
+        showTooltip: true,
+        showInfoWindow: true,
+        useMapTypeControl: true,
+        icons: {
+          blue: {
+            normal:   url + 'Map-Marker-Ball-Azure-icon.png',
+            selected: url + 'Map-Marker-Ball-Right-Azure-icon.png'
+          },
+          green: {
+            normal:   url + 'Map-Marker-Push-Pin-1-Chartreuse-icon.png',
+            selected: url + 'Map-Marker-Push-Pin-1-Right-Chartreuse-icon.png'
+          },
+          pink: {
+            normal:   url + 'Map-Marker-Ball-Pink-icon.png',
+            selected: url + 'Map-Marker-Ball-Right-Pink-icon.png'
+          },
+          gun: {
+            normal:   'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/',
+            selected: 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/48/'
+          },
+          bomb: {
+            normal:   'http://icons.iconarchive.com/icons/icons-land/multiple-smiley/48/Bomb-Cool-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/icons-land/multiple-smiley/48/Bomb-Cool-icon.png'
+          },
+          plane: {
+            normal: 'http://icons.iconarchive.com/icons/dapino/summer-holiday/48/aeroplane-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/dapino/summer-holiday/48/aeroplane-icon.png'
+          },
+          mask: {
+            normal: 'http://icons.iconarchive.com/icons/cedarseed/british-museum/48/Irciq-man-fox-mask-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/cedarseed/british-museum/48/Irciq-man-fox-mask-icon.png'
+          },
+          karate: {
+            normal: 'http://icons.iconarchive.com/icons/findhold/karate/48/karate-highkick-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/findhold/karate/48/karate-highkick-icon.png'
+          },
+          house: {
+            normal: 'http://icons.iconarchive.com/icons/mymovingreviews/3d-movers/48/carry-home-brown-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/mymovingreviews/3d-movers/48/carry-home-brown-icon.png'
+          },
+          block: {
+            normal: 'http://icons.iconarchive.com/icons/iconsmind/outline/48/Barricade-2-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/iconsmind/outline/48/Barricade-2-icon.png'
+          },
+          hit: {
+            normal: 'http://icons.iconarchive.com/icons/th3-prophetman/game/48/Hitman-Blood-Money-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/th3-prophetman/game/48/Hitman-Blood-Money-icon.png'
+          },
+          ukow: {
+            normal: 'http://icons.iconarchive.com/icons/flameia/xrabbit/48/System-Unknown-icon.png',
+            selected: 'http://icons.iconarchive.com/icons/flameia/xrabbit/48/System-Unknown-icon.png'
+          }
+      }
+      };
+      var map = new google.visualization.Map(document.getElementById('map_div'));
+
+      map.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+  <div id="map_div" style="height: 1200px; width: 900px"></div>
+</body>
+</html>
+
+    
